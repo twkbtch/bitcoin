@@ -1,4 +1,8 @@
 #!/bin/sh
+# Copyright (c) 2014-2015 The Bitcoin Core developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 set -e
 
 UNSIGNED="$1"
@@ -20,7 +24,7 @@ fi
 
 rm -rf ${TEMPDIR} && mkdir -p ${TEMPDIR}
 tar -C ${TEMPDIR} -xf ${UNSIGNED}
-tar -C ${TEMPDIR} -xf ${SIGNATURE}
+cp -rf "${SIGNATURE}"/* ${TEMPDIR}
 
 if [ -z "${PAGESTUFF}" ]; then
   PAGESTUFF=${TEMPDIR}/pagestuff
